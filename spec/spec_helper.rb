@@ -1,6 +1,11 @@
-ENV["RACK_ENV"] = 'test'
+ENV['RACK_ENV'] = 'test'
 
-require 'capybara/rspec'
-require './app/server'
+require 'minitest/autorun'
+require 'rack/test'
+require './app/server.rb'
 
-Capybara.app = Sinatra::Application.new
+include Rack::Test::Methods
+
+def app
+  Sinatra::Application
+end
